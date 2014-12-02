@@ -8,8 +8,16 @@ $link = mysql_connect($dbhost, $username, $password);
 mysql_select_db($dbname);
 
 */
-
-
+$filen = "";
+	//$file_path = "../upload_files/dishes_image/";
+	
+	//$file_name=$_FILES['uploaded_file']['name'];
+	/* generate file name with random no */
+	$file_rand=rand(1, 1000000); 
+	 $file_name = $file_rand.".jpg";
+//	$file_path = $file_path . basename( $_FILES['uploaded_file']['name']);
+    $file_path = $file_path . basename( $file_name);
+	echo $file_path;exit;
 $bucket = 'tagyas3';
 $keyname = 'fileToUpload';
 // $filepath should be absolute path to a file on disk						
@@ -26,10 +34,7 @@ $result = $s3->putObject(array(
     'ContentType'  => 'text/plain',
     'ACL'          => 'public-read',
     'StorageClass' => 'REDUCED_REDUNDANCY',
-    'Metadata'     => array(    
-        'param1' => 'value 1',
-        'param2' => 'value 2'
-    )
+    
 ));
 
 mysql_close();
