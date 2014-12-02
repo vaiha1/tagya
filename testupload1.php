@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     try {
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
 ?>
-        <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'))?>">successful</a> :)</p>
+        <p>Upload <a href="<?php echo htmlspecialchars($upload->get('ObjectURL')); ?>">successful</a> :)</p>
 <?php } catch(Exception $e) { ?>
         <p>Upload error :( <?php echo $e; ?></p>
 <?php } } ?>
