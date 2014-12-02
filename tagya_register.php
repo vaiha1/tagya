@@ -37,10 +37,10 @@ $s3 = S3Client::factory(array(
 
 $bucket = 'tagyas3';
 $blist = $s3->listBuckets();
-echo "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
-echo "<br>Bucket listing ..<br>";
+ "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
+ "<br>Bucket listing ..<br>";
 foreach ($blist['Buckets'] as $b) {
-    echo "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
+     "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
 }
 
 
@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_F
 	  // echo json_encode($result);
 } 
 catch(Exception $e) { 
-        echo  $e; 
+        //echo  $e; 
  } }
  
 }
