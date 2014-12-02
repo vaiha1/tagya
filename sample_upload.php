@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         <p>Upload error :(</p>
 <?php } } ?>
         <h2>Upload a file</h2>
-        <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']?>" method="POST">
+        <form enctype="multipart/form-data" action="sample_upload.php" method="POST">
             <input name="userfile" type="file"><input type="submit" value="Upload">
         </form>
     </body>
