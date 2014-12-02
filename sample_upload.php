@@ -1,5 +1,5 @@
 <?php
-//echo 'hai';
+echo 'hai';
 require('vendor/autoload.php');
 echo "hai";
 // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
