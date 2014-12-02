@@ -8,6 +8,9 @@ echo "require included";
     'secret' => 'z1YJ3HgrX3GmKtfvspz4xBiHlcNxqTvL7VjFzQ4N',
 )); */
 $s3 =  S3Client::factory();
+$credentials = $s3->getCredentials();
+$credentials->setAccessKeyId('AKIAJ6ZDK6VP7WZUL4RQ');
+$credentials->setSecretKey('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');
 $bucket = 'tagyas3';
 echo $bucket;
 ?>
@@ -28,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         <p>Upload error :(</p>
 <?php } } ?>
         <h2>Upload a file</h2>
-        <form enctype="multipart/form-data" action="sample_upload.php" method="POST">
+        <form enctype="multipart/form-data" action="testupload1.php" method="POST">
             <input name="userfile" type="file"><input type="submit" value="Upload">
         </form>
     </body>
