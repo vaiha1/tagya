@@ -50,8 +50,8 @@ if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_F
         $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
        $a="echo htmlspecialchars($upload->get('ObjectURL'))";
 	   $updat_sql = "update tagya_users set profile_image='$upload' where id='$user_id'";
-	   header('Content-type: application/json');
-	   echo json_encode($result);
+	 //  header('Content-type: application/json');
+	  // echo json_encode($result);
 } 
 catch(Exception $e) { 
         echo  $e; 
