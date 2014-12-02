@@ -4,15 +4,16 @@ require('aws/aws-autoloader.php');
 //echo "hai";
 // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
 $s3 = Aws\S3\S3Client::factory();
-echo $bucket = 'tagyas3';
+ $bucket = 'tagyas3';
 ?>
 <html>
     <head><meta charset="UTF-8"></head>
     <body>
         <h1>S3 upload example</h1>
 <?php
-echo 'hai';
+
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
+	echo 'hai';
     // FIXME: add more validation, e.g. using ext/fileinfo
     try {
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
