@@ -7,6 +7,7 @@ echo "<br>require included";
     'key'    => 'AKIAJ6ZDK6VP7WZUL4RQ',
     'secret' => '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',
 )); */
+use Aws\S3\S3Client;
 $s3 =  S3Client::factory();
 echo "<br>s3 client connected.";
 $bucket = 'tagyas3';
