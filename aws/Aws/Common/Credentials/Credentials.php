@@ -31,10 +31,10 @@ use Guzzle\Common\Collection;
  */
 class Credentials implements CredentialsInterface, FromConfigInterface
 {
-    const ENV_KEY = 'AWS_ACCESS_KEY_ID';
-    const ENV_SECRET = 'AWS_SECRET_KEY';
-    const ENV_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY';
-    const ENV_PROFILE = 'AWS_PROFILE';
+    const ENV_KEY = 'AKIAJ6ZDK6VP7WZUL4RQ';
+    const ENV_SECRET = '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';
+    const ENV_SECRET_ACCESS_KEY = 'z1YJ3HgrX3GmKtfvspz4xBiHlcNxqTvL7VjFzQ4N';
+    const ENV_PROFILE = 'my_profile';
 
     /** @var string AWS Access Key ID */
     protected $key;
