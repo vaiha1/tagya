@@ -45,6 +45,7 @@ foreach ($blist['Buckets'] as $b) {
 
 
 if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
+	echo 'hai1';
     try {
         $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
        $a="echo htmlspecialchars($upload->get('ObjectURL'))";
@@ -63,6 +64,7 @@ catch(Exception $e) {
 
 else
 {
+	echo 'hai2';
  $sql = "INSERT INTO tagya_users(user_name,email, address,fb_id,twitter_id,created_date) VALUES('$user_name','$email', '$city_state','$fb_id','$twitter_id','$register_date')";
 $result=mysql_query($sql);
 $get_id = $db->lastInsertId();
