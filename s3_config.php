@@ -1,6 +1,6 @@
 <?php
 // Bucket Name
-$bucket="BucketName";
+$bucket="tagyas3";
 if (!class_exists('S3'))require_once('S3.php');
 
 //AWS access info
