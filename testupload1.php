@@ -1,15 +1,13 @@
 <?php
 echo 'hai';
 require('aws/aws-autoloader.php');
-echo "<br>require included";
+echo "require included";
 // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
 /* $s3 =  S3Client::factory(array(
     'key'    => 'AKIAJ6ZDK6VP7WZUL4RQ',
     'secret' => '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',
 )); */
-use Aws\S3\S3Client;
 $s3 =  S3Client::factory();
-echo "<br>s3 client connected.";
 $bucket = 'tagyas3';
 echo $bucket;
 ?>
@@ -30,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         <p>Upload error :(</p>
 <?php } } ?>
         <h2>Upload a file</h2>
-        <form enctype="multipart/form-data" action="#" method="POST">
+        <form enctype="multipart/form-data" action="sample_upload.php" method="POST">
             <input name="userfile" type="file"><input type="submit" value="Upload">
         </form>
     </body>
