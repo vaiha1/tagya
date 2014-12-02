@@ -17,7 +17,7 @@ $filen = "";
 	 $file_name = $file_rand.".jpg";
 //	$file_path = $file_path . basename( $_FILES['uploaded_file']['name']);
     $file_path = $file_path . basename( $file_name);
-	echo $file_path;exit;
+	echo $file_path;
 $bucket = 'tagyas3';
 $keyname = 'fileToUpload';
 // $filepath should be absolute path to a file on disk						
