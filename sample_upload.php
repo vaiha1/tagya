@@ -3,7 +3,10 @@
 require('aws/aws-autoloader.php');
 //echo "hai";
 // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
-$s3 = Aws\S3\S3Client::factory();
+$s3 =  S3Client::factory(array(
+    'key'    => 'AKIAJ6ZDK6VP7WZUL4RQ',
+    'secret' => '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',
+));
  $bucket = 'tagyas3';
 ?>
 <html>
