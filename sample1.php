@@ -21,7 +21,7 @@ mysql_select_db($dbname);
 
 <?php
 $bucket = 'tagyas3';
-$keyname = 'UploadImage';
+$keyname = 'fileToUpload';
 // $filepath should be absolute path to a file on disk						
 $filepath = ' tagyas3/profile_images';
 						
