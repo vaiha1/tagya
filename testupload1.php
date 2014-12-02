@@ -18,8 +18,8 @@ $credentials = $s3->getCredentials();
 $credentials->setAccessKeyId('AKIAJ6ZDK6VP7WZUL4RQ');
 $credentials->setSecretKey('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'); */
 $bucket = 'tagyas3';
-echo $bucket;
-$blist = $client->listBuckets();
+echo "<br>".$bucket;
+$blist = $s3->listBuckets();
 echo "   Buckets belonging to " . $blist['Owner']['ID'] . ":\n";
 foreach ($blist['Buckets'] as $b) {
     echo "{$b['Name']}\t{$b['CreationDate']}\n";
