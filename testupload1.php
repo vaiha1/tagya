@@ -2,18 +2,29 @@
 echo 'hai';
 require('aws/aws-autoloader.php');
 echo "require included";
-// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
-/* $s3 =  S3Client::factory(array(
-    'key'    => 'AKIAJ6ZDK6VP7WZUL4RQ',
-    'secret' => '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',
-)); */
 use Aws\S3\S3Client;
-$s3 =  S3Client::factory();
+// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
+define('AWS_KEY', 'AKIAJ6ZDK6VP7WZUL4RQ');
+define('AWS_SECRET_KEY', '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');
+define('HOST', 'http://ec2-54-173-218-7.compute-1.amazonaws.com');
+$s3 = S3Client::factory(array(
+    'base_url' => HOST,
+    'key'      => AWS_KEY,
+    'secret'   => AWS_SECRET_KEY
+));
+
+/* $s3 =  S3Client::factory();
 $credentials = $s3->getCredentials();
 $credentials->setAccessKeyId('AKIAJ6ZDK6VP7WZUL4RQ');
-$credentials->setSecretKey('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');
+$credentials->setSecretKey('z1YJ3HgrX3GmKtfvspz4xBiHlcNxqTvL7VjFzQ4N'); */
 $bucket = 'tagyas3';
 echo $bucket;
+$blist = $client->listBuckets();
+echo "   Buckets belonging to " . $blist['Owner']['ID'] . ":\n";
+foreach ($blist['Buckets'] as $b) {
+    echo "{$b['Name']}\t{$b['CreationDate']}\n";
+}
+echo "<br>listing over...";
 ?>
 <html>
     <head><meta charset="UTF-8"></head>
@@ -29,11 +40,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
 ?>
         <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'))?>">successful</a> :)</p>
 <?php } catch(Exception $e) { ?>
-        <p>Upload error :(</p>
+        <p>Upload error :( <?php echo $e; ?></p>
 <?php } } ?>
         <h2>Upload a file</h2>
         <form enctype="multipart/form-data" action="testupload1.php" method="POST">
-            <input name="userfile" type="file"><input type="submit" value="Upload">
+            <input name="userfile" type="file" /><input type="submit" value="Upload" />
         </form>
     </body>
 </html>
