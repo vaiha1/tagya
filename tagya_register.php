@@ -28,7 +28,7 @@ mysql_select_db($dbname);
 if($user_id!='')
 {
 	?>
-	  <form enctype="multipart/form-data" action="testupload1.php" method="POST">
+	  <form enctype="multipart/form-data" action="tagya_register.php" method="POST">
             <input name="userfile" type="file" /><input type="submit" value="Upload" />
         </form>
     </body>
