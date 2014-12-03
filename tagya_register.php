@@ -26,14 +26,11 @@ mysql_select_db($dbname);
 
 
 if($user_id!='')
-{
-	
-	  
-
-echo 'hai1';
+{  
+//echo 'hai1';
 define('AWS_KEY', 'AKIAJ6ZDK6VP7WZUL4RQ');
 define('AWS_SECRET_KEY', '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');
-$s3 = S3Client::factory(array(
+echo $s3 = S3Client::factory(array(
     'key'      => AWS_KEY,
     'secret'   => AWS_SECRET_KEY
 ));
