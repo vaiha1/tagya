@@ -1,6 +1,6 @@
 <?php
 
-$user_id=$_REQUEST['user_id'];
+echo $user_id=$_REQUEST['user_id'];
 
 require('aws/aws-autoloader.php');
 use Aws\S3\S3Client;
