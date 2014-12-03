@@ -70,8 +70,8 @@ else
 {
 	echo 'hai2';
  echo $sql = "INSERT INTO tagya_users(user_name,email, address,fb_id,twitter_id,created_date) VALUES('$user_name','$email', '$city_state','$fb_id','$twitter_id','$register_date')";
-$result=mysql_query($sql);
-$get_id = $db->lastInsertId();
+echo $result=mysql_query($sql);
+echo $get_id = $db->lastInsertId();
 
 echo $res = array("status"=>"success", "message"=>"register successfully.","user_id"=>$get_id);
 	
