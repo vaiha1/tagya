@@ -1,8 +1,8 @@
 <?php
 require('aws/aws-autoloader.php');
 use Aws\S3\S3Client;
-define('AWS_KEY', 'AKIAJ6ZDK6VP7WZUL4RQ');
-define('AWS_SECRET_KEY', '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');
+define('AWS_KEY', 'AKIAIQUEG4LKFMZ6VLTQ');
+define('AWS_SECRET_KEY', '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');
 $s3 = S3Client::factory(array(
     'key'      => AWS_KEY,
     'secret'   => AWS_SECRET_KEY
