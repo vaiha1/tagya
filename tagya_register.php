@@ -72,7 +72,7 @@ else
  $sql = "INSERT INTO tagya_users(user_name,email, address,fb_id,twitter_id,created_date) VALUES('$user_name','$email', '$city_state','$fb_id','$twitter_id','$register_date')";
 $result=mysql_query($sql);
 $get_id = $db->lastInsertId();
-mysql_close();
+
 echo $res = array("status"=>"success", "message"=>"register successfully.","user_id"=>$get_id);
 	
 header('Content-type: application/json');
