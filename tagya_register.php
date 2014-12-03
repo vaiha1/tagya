@@ -77,6 +77,7 @@ echo $res = array("status"=>"success", "message"=>"register successfully.","user
 	
 header('Content-type: application/json');
 echo json_encode($res);
+echo 'hai';
 //echo $result;
 }
 //echo 'success';
