@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
 
         echo $path= htmlspecialchars($upload->get('ObjectURL')); 
 
-   echo $updat_sql = "update tagya_user set profile_image='$path' where id='$user_id'";  
+   echo $updat_sql = "update tagya_users set profile_image='$path' where id='$user_id'";  
 	 $result=mysql_query($updat_sql);   
 }  ?>
         <h2>Upload a file</h2>
