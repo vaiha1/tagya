@@ -23,10 +23,21 @@ if(isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK &
     $path= htmlspecialchars($upload->get('ObjectURL')); 
    	$updat_sql = "update tagya_users set profile_image= '$path' where id= '$user_id'";  
 	$result= mysql_query($updat_sql);   
-	 
+	if (!$result) {
+		//$arr = array("Registration"=>"Failed", "message"=>"Error");	
+		$result1 = array("status"=>"Failed", "message"=>"Error");
+	}
+	else{
+		
+		$result1 = array("status"=>"success", "message"=>"Profile image updated  successfully.");
+	}
 }
+ 
+header('Content-type: application/json');
+echo json_encode($result1); 
+
 ?>
-<html>
+<!--<html>
     <head><meta charset="UTF-8"></head>
     <body>
         <h1>S3 upload example</h1>
@@ -36,4 +47,4 @@ if(isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK &
             <input name="user_id" type="hidden" value="<?php echo $user_id; ?>"/>
         </form>
     </body>
-</html>
+</html>-->
