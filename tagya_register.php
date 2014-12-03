@@ -69,9 +69,9 @@ if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_F
 else
 {
 	echo 'hai2';
- echo $sql = "INSERT INTO tagya_users(user_name,email, address,fb_id,twitter_id,created_date) VALUES('$user_name','$email', '$city_state','$fb_id','$twitter_id','$register_date')";
+ $sql = "INSERT INTO tagya_users(user_name,email, address,fb_id,twitter_id,created_date) VALUES('$user_name','$email', '$city_state','$fb_id','$twitter_id','$register_date')";
 echo $result=mysql_query($sql);
-echo $get_id = mysqli_insert_id($sql);
+echo $get_id = mysql_insert_id($sql);
 
 echo $res = array("status"=>"success", "message"=>"register successfully.","user_id"=>$get_id);
 	
