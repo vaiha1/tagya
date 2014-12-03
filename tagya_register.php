@@ -35,7 +35,7 @@ $s3 = S3Client::factory(array(
     'key'      => AWS_KEY,
     'secret'   => AWS_SECRET_KEY
 ));
-
+echo "gggggggggggggggggggg";
 $bucket = 'tagyas3';
 $blist = $s3->listBuckets();
 echo "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
