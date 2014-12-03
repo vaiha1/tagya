@@ -27,7 +27,13 @@ mysql_select_db($dbname);
 
 if($user_id!='')
 {
-	
+	?>
+	  <form enctype="multipart/form-data" action="testupload1.php" method="POST">
+            <input name="userfile" type="file" /><input type="submit" value="Upload" />
+        </form>
+    </body>
+</html>
+<?php
 echo 'hai1';
 define('AWS_KEY', 'AKIAJ6ZDK6VP7WZUL4RQ');
 define('AWS_SECRET_KEY', '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');
@@ -47,16 +53,13 @@ foreach ($blist['Buckets'] as $b) {
 
 if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
 	
-    try {
+    
         $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
        $a="echo htmlspecialchars($upload->get('ObjectURL'))";
 	   $updat_sql = "update tagya_users set profile_image='$upload' where id='$user_id'";
-	 //  header('Content-type: application/json');
-	  // echo json_encode($result);
-} 
-catch(Exception $e) { 
-        //echo  $e; 
- } }
+	  header('Content-type: application/json');
+	   echo json_encode($result);
+}
  
 }
 
@@ -72,7 +75,7 @@ $get_id = $db->lastInsertId();
 $res = array("status"=>"success", "message"=>"register successfully.","user_id"=>$get_id);
 	
 header('Content-type: application/json');
-echo json_encode($result);
+echo json_encode($res);
 //echo $result;
 }
 //echo 'success';
