@@ -17,7 +17,7 @@ $fb_id=$_REQUEST['fb_id'];
 $twitter_id=$_REQUEST['twitter_id'];
 $register_date=$_REQUEST['created_date'];
 
-$user_id=$_REQUEST['username'];
+$user_id=$_REQUEST['user_id'];
 $profile=$_REQUEST['profile_image'];
 
 $link = mysql_connect($dbhost, $username, $password);
@@ -28,6 +28,7 @@ mysql_select_db($dbname);
 if(user_id!='')
 {
 	
+echo 'hai1';
 define('AWS_KEY', 'AKIAJ6ZDK6VP7WZUL4RQ');
 define('AWS_SECRET_KEY', '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');
 $s3 = S3Client::factory(array(
@@ -45,7 +46,7 @@ foreach ($blist['Buckets'] as $b) {
 
 
 if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
-	echo 'hai1';
+	
     try {
         $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
        $a="echo htmlspecialchars($upload->get('ObjectURL'))";
