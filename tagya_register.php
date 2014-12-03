@@ -27,34 +27,39 @@ mysql_select_db($dbname);
 
 if($user_id!='')
 {  
-//echo 'hai1';
+/*require('aws/aws-autoloader.php');
+use Aws\S3\S3Client;*/
 define('AWS_KEY', 'AKIAJ6ZDK6VP7WZUL4RQ');
 define('AWS_SECRET_KEY', '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');
-echo $s3 = S3Client::factory(array(
+$s3 = S3Client::factory(array(
     'key'      => AWS_KEY,
     'secret'   => AWS_SECRET_KEY
 ));
 
 $bucket = 'tagyas3';
 $blist = $s3->listBuckets();
- "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
- "<br>Bucket listing ..<br>";
+echo "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
+echo "<br>Bucket listing ..<br>";
 foreach ($blist['Buckets'] as $b) {
-     "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
+    echo "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
 }
 
-
-if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
-	
-    
+?>
+<html>
+    <head><meta charset="UTF-8"></head>
+    <body>
+        <h1>S3 upload example</h1>
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
+    try {
         $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
-       $a="echo htmlspecialchars($upload->get('ObjectURL'))";
-	   $updat_sql = "update tagya_users set profile_image='$upload' where id='$user_id'";
-	  header('Content-type: application/json');
-	   echo json_encode($result);
-}?>
-
-<form enctype="multipart/form-data" action="tagya_register.php" method="POST">
+?>
+        <p>Upload <a href="<?php echo htmlspecialchars($upload->get('ObjectURL')); ?>">successful</a> :)</p>
+<?php } catch(Exception $e) { ?>
+        <p>Upload error :( <?php echo $e; ?></p>
+<?php } } ?>
+        <h2>Upload a file</h2>
+        <form enctype="multipart/form-data" action="testupload1.php" method="POST">
             <input name="userfile" type="file" /><input type="submit" value="Upload" />
         </form>
     </body>
