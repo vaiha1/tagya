@@ -71,13 +71,13 @@ else
 	//echo 'hai2';
  $sql = "INSERT INTO tagya_users(user_name,email, address,fb_id,twitter_id,created_date) VALUES('$user_name','$email', '$city_state','$fb_id','$twitter_id','$register_date')";
  $result=mysql_query($sql);
-echo $get_id = mysql_insert_id();
+ $get_id = mysql_insert_id();
 
-echo $res = array("status"=>"success", "message"=>"register successfully.","user_id"=>$get_id);
+ $res = array("status"=>"success", "message"=>"register successfully.","user_id"=>$get_id);
 	
 header('Content-type: application/json');
 echo json_encode($res);
-echo 'hai';
+//echo 'hai';
 //echo $result;
 }
 //echo 'success';
