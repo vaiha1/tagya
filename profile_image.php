@@ -1,5 +1,12 @@
 <?php
 
+$dbhost = 'tagya-db.cgxgvzgqoani.us-east-1.rds.amazonaws.com';
+$username = 'tagya_user_1';
+$password = 'S8DEh=)xz7wYT#-';
+$dbname = 'tagya_db';
+$link = mysql_connect($dbhost, $username, $password);
+mysql_select_db($dbname);
+
 require('aws/aws-autoloader.php');
 use Aws\S3\S3Client;
 define('AWS_KEY', 'AKIAIQUEG4LKFMZ6VLTQ');
@@ -14,8 +21,8 @@ $user_id=$_REQUEST['user_id'];
 if(isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
 	$upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
     $path= htmlspecialchars($upload->get('ObjectURL')); 
-   	echo $updat_sql = "update tagya_users set profile_image= '$path' where id= '$user_id'";  
-	$result=mysql_query($updat_sql);   
+   	$updat_sql = "update tagya_users set profile_image= '$path' where id= '$user_id'";  
+	$result= mysql_query($updat_sql);   
 	 
 }
 ?>
