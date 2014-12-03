@@ -27,13 +27,9 @@ mysql_select_db($dbname);
 
 if($user_id!='')
 {
-	?>
-	  <form enctype="multipart/form-data" action="tagya_register.php" method="POST">
-            <input name="userfile" type="file" /><input type="submit" value="Upload" />
-        </form>
-    </body>
-</html>
-<?php
+	
+	  
+
 echo 'hai1';
 define('AWS_KEY', 'AKIAJ6ZDK6VP7WZUL4RQ');
 define('AWS_SECRET_KEY', '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');
@@ -59,8 +55,14 @@ if($_SERVER['REQUEST_METHOD'] == '_REQUEST' && isset($_FILES['userfile']) && $_F
 	   $updat_sql = "update tagya_users set profile_image='$upload' where id='$user_id'";
 	  header('Content-type: application/json');
 	   echo json_encode($result);
-}
- 
+}?>
+
+<form enctype="multipart/form-data" action="tagya_register.php" method="POST">
+            <input name="userfile" type="file" /><input type="submit" value="Upload" />
+        </form>
+    </body>
+</html>
+ <?php
 }
 
 
