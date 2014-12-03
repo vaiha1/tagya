@@ -1,4 +1,7 @@
 <?php
+
+$user_id=$_REQUEST['user_id'];
+
 require('aws/aws-autoloader.php');
 use Aws\S3\S3Client;
 define('AWS_KEY', 'AKIAIQUEG4LKFMZ6VLTQ');
@@ -23,13 +26,14 @@ foreach ($blist['Buckets'] as $b) {
         <h1>S3 upload example</h1>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
-    try {
+    
         $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
 
-        echo $path= htmlspecialchars($upload->get('ObjectURL')); ?>
-<?php } catch(Exception $e) { ?>
-        <p>Upload error :( <?php echo $e; ?></p>
-<?php } } ?>
+        echo $path= htmlspecialchars($upload->get('ObjectURL')); 
+
+    $updat_sql = "update tagya_user set profile_image='$path' where id='$user_id'";  
+	 $result=mysql_query($updat_sql);   
+}  ?>
         <h2>Upload a file</h2>
         <form enctype="multipart/form-data" action="profile_image.php" method="POST">
             <input name="userfile" type="file" /><input type="submit" value="Upload" />
