@@ -38,8 +38,8 @@ $s3 = S3Client::factory(array(
 echo "gggggggggggggggggggg";
 echo $bucket = 'tagyas3';
 echo $blist = $s3->listBuckets();
-echo "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
-echo "<br>Bucket listing ..<br>";
+//echo "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
+//echo "<br>Bucket listing ..<br>";
 foreach ($blist['Buckets'] as $b) {
     echo "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
 }
