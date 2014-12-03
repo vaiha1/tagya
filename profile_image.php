@@ -13,7 +13,7 @@ $blist = $s3->listBuckets();
 //"<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
 //echo "<br>Bucket listing ..<br>";
 foreach ($blist['Buckets'] as $b) {
-    echo "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
+   // echo "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
 }
 
 ?>
@@ -24,9 +24,9 @@ foreach ($blist['Buckets'] as $b) {
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     try {
-     echo   $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
-?>
-        <p>Upload <a href="<?php echo htmlspecialchars($upload->get('ObjectURL')); ?>">successful</a> :)</p>
+        $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
+
+        $path= htmlspecialchars($upload->get('ObjectURL')); ?>
 <?php } catch(Exception $e) { ?>
         <p>Upload error :( <?php echo $e; ?></p>
 <?php } } ?>
