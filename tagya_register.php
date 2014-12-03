@@ -25,7 +25,7 @@ mysql_select_db($dbname);
 
 
 
-if(user_id!='')
+if($user_id!='')
 {
 	
 echo 'hai1';
