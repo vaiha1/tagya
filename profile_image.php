@@ -10,8 +10,8 @@ $s3 = S3Client::factory(array(
 
 $bucket = 'tagyas3';
 $blist = $s3->listBuckets();
-echo "<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
-echo "<br>Bucket listing ..<br>";
+//"<br>Buckets belonging to " . $blist['Owner']['ID'] . ":<br>";
+//echo "<br>Bucket listing ..<br>";
 foreach ($blist['Buckets'] as $b) {
     echo "{$b['Name']} &nbsp;&nbsp;&nbsp; {$b['CreationDate']}<br>";
 }
@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         <p>Upload error :( <?php echo $e; ?></p>
 <?php } } ?>
         <h2>Upload a file</h2>
-        <form enctype="multipart/form-data" action="testupload1.php" method="POST">
+        <form enctype="multipart/form-data" action="profile_image.php" method="POST">
             <input name="userfile" type="file" /><input type="submit" value="Upload" />
         </form>
     </body>
