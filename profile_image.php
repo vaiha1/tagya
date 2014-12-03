@@ -26,7 +26,7 @@ foreach ($blist['Buckets'] as $b) {
         <h1>S3 upload example</h1>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
-    echo hai;
+    
         $upload = $s3->upload($bucket, 'profile_images/'.$_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
 
         $path= htmlspecialchars($upload->get('ObjectURL')); 
@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
    echo $updat_sql = "update tagya_users set profile_image= '$path' where id= '$user_id'";  
 	 $result=mysql_query($updat_sql);   
 	 
-} echo 'hai11'; ?>
+}  ?>
         <h2>Upload a file</h2>
         <form enctype="multipart/form-data" action="profile_image.php" method="POST">
             <input name="userfile" type="file" /><input type="submit" value="Upload" />
