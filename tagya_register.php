@@ -18,7 +18,7 @@ $created_at = $_REQUEST['created_at'];
 
 if($user_id!='')
 { 
-	$sql = "INSERT INTO tagya_users(user_id,fname, lname, email, address, created_at) VALUES('$user_id','$fname','$lname','$email', '$address','$created_at')";
+	$sql = "INSERT INTO tagya_users(user_id,utype,fname, lname, email, address, created_at) VALUES('$user_id','$utype','$fname','$lname','$email', '$address','$created_at')";
 	$result=mysql_query($sql);
 	$get_id = mysql_insert_id();
 	
